@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:khatem_tasbeeh/Categories/AppColors.dart';
 import 'package:khatem_tasbeeh/Categories/AppImages.dart';
+import 'package:khatem_tasbeeh/Categories/AppIcons.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,19 +13,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int counter = 0;
-
+  String? selectedValue;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white70,
       body: Column(
         children: [
+          SizedBox(height: 35),
           Image.asset(AppImages.tasbeeh),
-          SizedBox(height: 70),
+          SizedBox(height: 150),
           Container(
             padding: EdgeInsets.all(20),
-            width: 200,
-            height: 200,
+            width: 250,
+            height: 250,
             decoration: BoxDecoration(
               color: Colors.blueAccent,
               borderRadius: BorderRadius.only(bottomLeft: Radius.circular(100), bottomRight: Radius.circular(100), topLeft: Radius.circular(30), topRight: Radius.circular(30)),
@@ -32,22 +35,48 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.only(right: 5),
-                  width: 150,
-                  height: 40,
+                  padding: EdgeInsets.only(left: 5),
+                  width: 200,
+                  height: 50,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(14),
                     border: Border.all(color: AppColors.black, width: 5)
                   ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(counter.toString(), style: TextStyle(fontSize: 20))
+                      Expanded(child: Text(counter.toString(), style: TextStyle(fontSize: 20))),
+                      SizedBox(width: 100,
+                        child: DropdownButton
+                          (
+                            underline: Container(),
+                            iconSize: 30,
+                            value: selectedValue,
+
+                            hint: Text("اذكر الله", style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),),
+                            items:
+                            [
+                              DropdownMenuItem(value: 'سبحان الله', child: Text("سبحان الله", style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold))),
+                              DropdownMenuItem(value: 'الحمد لله', child: Text("الحمد لله", style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold))),
+                              DropdownMenuItem(value: 'لا إله إلا الله', child: Text("لا إله إلا الله", style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold))),
+                              DropdownMenuItem(value: 'الله أكبر', child: Text("الله أكبر", style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold))),
+                              DropdownMenuItem(value: 'صلى على النبى', child: Text("صلى على النبى", style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold))),
+                            ],
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                selectedValue = newValue; // Update the selected value
+                              });
+                            },
+                            icon: Icon(Icons.arrow_drop_down),
+                                              ),
+                      ),
+                      SizedBox(width: 20),
+
                     ],
                   ),
                 ),
-                SizedBox(height: 40),
+                SizedBox(height: 70),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -55,8 +84,8 @@ class _HomePageState extends State<HomePage> {
                     Expanded(
                       child: InkWell(
                         child: Container(
-                          width: 60,
-                          height: 60,
+                          width: 70,
+                          height: 70,
                           decoration: BoxDecoration(
                             color: Colors.grey,
                             shape: BoxShape.circle,
@@ -75,8 +104,8 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         InkWell(
                           child: Container(
-                            width: 20,
-                            height: 20,
+                            width: 30,
+                            height: 30,
                             decoration: BoxDecoration(
                                 color: Colors.grey,
                                 shape: BoxShape.circle,
