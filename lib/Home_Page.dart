@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:khatem_tasbeeh/Categories/AppColors.dart';
 import 'package:khatem_tasbeeh/Categories/AppImages.dart';
-import 'package:khatem_tasbeeh/Categories/AppIcons.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -30,6 +28,7 @@ class _HomePageState extends State<HomePage> {
             decoration: BoxDecoration(
               color: Colors.blueAccent,
               borderRadius: BorderRadius.only(bottomLeft: Radius.circular(100), bottomRight: Radius.circular(100), topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+              boxShadow: [BoxShadow(color: AppColors.black, blurRadius: 4, offset: Offset(-3, 3))]
               
             ),
             child: Column(
